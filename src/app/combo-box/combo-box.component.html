@@ -1,0 +1,17 @@
+<mat-form-field>
+    <mat-select [formControl]="formControl" [placeholder]="placeholder" (selectionChange)="selectionChange($event)" #comboBoxElement>
+      <mat-option>
+        <ngx-mat-select-search
+        [formControl]="formControlFilter" 
+        [placeholderLabel]="placeholderLabel"
+        [noEntriesFoundLabel]="noEntriesFoundLabel">
+            <mat-icon ngxMatSelectSearchClear>delete</mat-icon>
+          </ngx-mat-select-search>
+      </mat-option>
+
+      <mat-option *ngFor="let comboBox of filteredComboBox | async" [value]="comboBox">
+        {{comboBox.text}}
+      </mat-option> 
+    </mat-select>
+</mat-form-field>
+
